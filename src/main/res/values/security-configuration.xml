@@ -1,0 +1,29 @@
+<resources>
+    <!-- Security Handler Configurations-->
+
+    <!--
+    Important:
+    Please read the NervousNet Security documentation and fully understand it before making any changes here, as it would impact the whole application's security and usage.
+    Declare all Security settings here, which makes them global settings, such that all the Http calls will have same settings.
+    Failure to do so might end up in using different certificate pools for different groups of calls, which could be very difficult to
+    change in code, for every Security configuration or Certificate Type change.-->
+
+    <!-- Declare what kind of certificates you would be using. Can use either of them, or both.-->
+    <bool name="USING_CA_CERTIFICATES">true</bool>
+    <bool name="USING_SELF_SIGNED_CERTIFICATES">false</bool>
+
+
+    <!-- Define Self -Signed certificate's KeyStore file name and password. Make Sure you add this keystore to assets directory under main directory. (main/assets)-->
+    <string name="LOCAL_KEY_STORE" translatable="false"></string>
+    <string name="LOCAL_KEY_STORE_PASSWORD" translatable="false"></string>
+    <string name="LOCAL_KEY_STORE_TYPE" translatable="false"></string>
+
+    <!-- Settings for local Symmetric Encrption-->
+    <!-- By Default, Local Encryption is done in AES with CBC as block cipher and PKCS7 for padding.
+    Though these default values are changeable, be sure to run test cases for validating the changes-->
+    <string name="MODE_CRYPTO" translatable="false">AES</string>
+    <string name="MODE_BLOCK" translatable="false">CBC</string>
+    <string name="MODE_PADDING" translatable="false">PKCS7Padding</string>
+    <string name="HASH_ALGORITHM" translatable="false">SHA-256</string>
+
+</resources>
