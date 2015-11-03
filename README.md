@@ -1,7 +1,7 @@
 # Android-Multicert
 A Custom Security Configuration Framework for Android.
 
-# Why Custom Security Configuration?
+## Why Custom Security Configuration?
 Android allows a list of trusted CA certifications. But using self-signed certificates alone, or in conjunction with CA certificates is tedious and manual process. This framework fills the gap.
 
 BENEFITS:
@@ -12,7 +12,6 @@ DRAWBACKS:
 Less flexibility - Every SSL certificate change requires a mandatory app update from Google Play store.
 
 ## Getting Started:
-
 Use this framework as a module or a package; Make sure the framework is able to access Android's resources directory.
 
 For getting the custom SSLSocketFactory with pre-defined settings through a singleton instance:
@@ -32,7 +31,7 @@ To over-ride default settings, work on Security-Configuration.XML file, after re
 
 The Default settings of this framework allows only CA certifications from Android’s Trust Store. This can be overridden to support different other configurations. As of now, NervousNet supports configurations of using only Self-Signed certificates or using both CA and Self-Signed certificates, as other options. Overriding default Security settings implies the Self-Signed certificates are being used alone or in combination, which requires to declare local keystore and password parameters in the security config file. Failure to do so will throw test and run time errors.
 
-# The Security-Configuration.XML file and its variables:
+## The Security-Configuration.XML file and its variables:
 
 This configuration file should be placed all the time under resources (res) directory of android application. It has been accessed in the code using Android’s resources endpoint. By default, NervousNet uses CA certificates only, which is configured with:
 	<bool name="USING_CA_CERTIFICATES">true</bool>
@@ -55,5 +54,5 @@ And for local data encryption,
     	<string name="HASH_ALGORITHM" translatable="false">SHA-256</string>
 These settings might not be changed unless or otherwise required. Make sure to run test suite after making changes here, as this ensures that changes are viable and successful.
 
-# Local KeyStore for Self-Signed Certificates:
+## Local KeyStore for Self-Signed Certificates:
 The local KeyStore is important if Self-Signed certificates are used. Please refer to using Self-Signed certificates for more information about generating Key-Store. This KeyStore must be password protected, in BKS format, and stored under Assets (main/assets) directory of app. This file name must also be specified in Security Configuration XML file.
