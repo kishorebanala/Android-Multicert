@@ -27,18 +27,18 @@ Or to make a quick Https request and get InputStream:
 
 	InputStream inputStream = SecurityConfiguration.makeRequest(applicationContext, url);
 
-To over-ride default settings, work on Security-Configuration.XML file, after read more about it below and fully understanding it.
+To over-ride default settings, work on Security-Configuration.XML file, after reading more about it below and fully understanding it.
 
-The Default settings of this framework allows only CA certifications from Android’s Trust Store. This can be overridden to support different other configurations. As of now, NervousNet supports configurations of using only Self-Signed certificates or using both CA and Self-Signed certificates, as other options. Overriding default Security settings implies the Self-Signed certificates are being used alone or in combination, which requires to declare local keystore and password parameters in the security config file. Failure to do so will throw test and run time errors.
+The Default settings of this framework allows only CA certifications from Android’s Trust Store. This can be overridden to support different other configurations. Overriding default Security settings implies the Self-Signed certificates are being used alone or in combination, which requires to declare local keystore and password parameters in the security config file. Failure to do so will throw test and run time errors.
 
 ## The Security-Configuration.XML file and its variables:
 
-This configuration file should be placed all the time under resources (res) directory of android application. It has been accessed in the code using Android’s resources endpoint. By default, NervousNet uses CA certificates only, which is configured with:
+This configuration file should be placed under resources (res) directory of android application. The default configuration is to support CA certificates only, which is configured with:
 	<bool name="USING_CA_CERTIFICATES">true</bool>
     	<bool name="USING_SELF_SIGNED_CERTIFICATES">false</bool>
 	
-	These values can be changed based on the requirements. At least one of them must be true all the times. Though misconfigured with false for both the values, it doesn’t voids SSL connections and still uses default settings. But, if the Self-Signed Certificates has to be used, the following values should also be declared, which basically makes sense as configuring Self-Signed certificates is required if determined to use.
-	Please read more about using self-signed certificates before configuring them, as one important pit-fall in using them is that it required an application update from play-store across all the instances, every time a certificate has to be changed.
+	These values can be changed based on the requirements. At least one of them must be true all the times. Accidentally misconfiguring with false for both the values doesn’t voids SSL connections and still uses default settings. But, if the Self-Signed Certificates has to be used, the following values should also be declared, which basically makes sense as configuring Self-Signed certificates is required if determined to use.
+	Please read more about using self-signed certificates before configuring them, as one important pit-fall in using them, particularly for mobile applications is that it required an application update from play-store across all the instances, every time a certificate has to be changed.
 
 	<string name="LOCAL_KEY_STORE" translatable="false">
 		sdtstore.bks		// File name of local Key store, full path is not required.
